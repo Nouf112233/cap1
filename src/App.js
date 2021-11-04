@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <p>hello</p>
+      
       <Start />
       <Routes>
         <Route exact path="/start" element={<Start />} />
