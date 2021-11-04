@@ -1,55 +1,89 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import './style.css'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./style.css";
 
 const Card = (props) => {
-    const cards = props.cards;
-    console.log("hello")
-    const id= Number(useParams().id);
+  const cards = props.cards;
+  const numOfCards = Number(useParams().id);
+  const [newCards, setNewCards] = useState([]);
+  const [openedCard, setOpenedCard]=useState([]);
+  const [matched,setMatched]=useState([]);
+
+  function flipCard(index) {
+    setOpenedCard((opened) => [...opened, index]);
+  }
+
+  useEffect(() => {
+    if(openedCard<2) return;
+
+    const firstMatched = newCards[openedCard[0]];
+    const secondMatched = newCards[openedCard[1]];
+
+    if(firstMatched.id===secondMatched.id)
+    {
+      setMatched([...matched,firstMatched.id])
+    }
+
+    if(openedCard.length=== 2)setTimeout(() => setOpenedCard([]), 1000);
+
+  }, [openedCard])
+
+  useEffect(() => {
+    let cardsNums = [];
+    let cardsNumsEle = [];
+    while (cardsNums.length !== numOfCards) {
+      const randomCard = Math.floor(Math.random() * cards.length);
+
+      if (!cardsNums.includes(randomCard)) {
+        cardsNums.push(randomCard);
+        cardsNumsEle.push(cards[randomCard]);
+      }
+    }
+
+    cardsNums.length = 0
+
+    while (cardsNums.length !== numOfCards) {
+      const randomCard = Math.floor(Math.random() * numOfCards);
+
+      if (!cardsNums.includes(randomCard)) {
+        cardsNums.push(randomCard);
+        cardsNumsEle.push(cardsNumsEle[randomCard]);
+      }
+    }
     
-    console.log(id);
-    let newCards=[];
 
-    function getRand(newArr,arr){
-        let card = arr[Math.floor(Math.random()*arr.length)];
-        if(!newArr.includes(card))
-        {
-            newArr.push(card);
-        }
-        else{
-            getRand(newArr.arr);
-        }
-    }
+    setNewCards([...cardsNumsEle]);
+  }, []);
 
-    for(let i=0; i<id ; i++)
-    {
-        getRand(newCards,cards);
-    }
+  return (
+    <div className="cards">
+      {newCards.map((item, i) => {
+         let isFlip = false;
 
-    newCards=[...newCards,...newCards];
-
-    let newCardsRand =[];
-
-    for(let i=0;i <newCards.length ;i++)
-    {
-        getRand(newCardsRand,newCards);
-    }
+         if(openedCard.includes(i)) isFlip = true;
+         if(matched.includes(item.id)) isFlip = true;
+        return (
+          <div 
+          key={i} 
+          className={`card-${isFlip ? "flipped" : ""}`}
+           onClick={()=>flipCard(i)}
+           >
+             <div className="inner">
+             <div className="front">
 
 
-    return (<>
-    <h1>hiioii</h1>
-        <div className="cards">
-            {newCardsRand.map((item,i)=>{
-                return (
-                    <div key={i} className="card">
-                        <img src={item.img} alt="card img"/>
-                    </div>
-                )
-            })}
-            
-        </div>
-        </>
-    )
-}
+            <img src={item.img} alt="card img"/>
+            {/* <h1>{item.id}</h1> */}
+            </div>
+            <div className="back"></div>
 
-export default Card
+            </div>
+
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default Card;
