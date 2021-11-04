@@ -19,7 +19,7 @@ const Card = (props) => {
     const firstMatched = newCards[openedCard[0]];
     const secondMatched = newCards[openedCard[1]];
 
-    if(firstMatched.id===secondMatched.id)
+    if(secondMatched && firstMatched.id===secondMatched.id)
     {
       setMatched([...matched,firstMatched.id])
     }
@@ -65,7 +65,7 @@ const Card = (props) => {
         return (
           <div 
           key={i} 
-          className={`card-${isFlip ? "flipped" : ""}`}
+          className={`card ${isFlip ? "flipped" : ""}`}
            onClick={()=>flipCard(i)}
            >
              <div className="inner">
