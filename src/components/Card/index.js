@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import "./style.css";
 
 const Card = (props) => {
@@ -8,6 +8,8 @@ const Card = (props) => {
   const [newCards, setNewCards] = useState([]);
   const [openedCard, setOpenedCard]=useState([]);
   const [matched,setMatched]=useState([]);
+  const [counter ,setCounter] = useState(60);
+  const navigate = useNavigate();
 
   function flipCard(index) {
     if(!openedCard.includes(index)){
@@ -15,6 +17,35 @@ const Card = (props) => {
     }
     
   }
+
+  useEffect(() => {
+    const timer =
+    counter > 0 && setInterval(()=> setCounter(counter - 1),1000);
+
+    if((counter===0)&&(matched.length<numOfCards))
+    {
+      
+      alert("Time's up, you're lost, try again");
+      setMatched([]);
+      setOpenedCard([]);
+      setCounter(60);
+      
+
+    }
+    if((counter>0)&&(matched.length===numOfCards))
+    {
+      
+      alert("congratulations for winning, try again");
+      setMatched([]);
+      setOpenedCard([]);
+      setCounter(60);
+    }
+    return () => {
+        clearInterval(timer);
+    }
+   
+    
+}, [counter])
 
   useEffect(() => {
     if(openedCard<2) return;
@@ -28,6 +59,8 @@ const Card = (props) => {
     }
 
     if(openedCard.length=== 2)setTimeout(() => setOpenedCard([]), 1000);
+    
+   
 
   }, [openedCard])
 
@@ -58,6 +91,10 @@ const Card = (props) => {
   }, []);
 
   return (
+    <>
+    <div className="timer">
+            <h3> Lift Time : {counter}</h3>
+        </div>
     <div className="cards">
       {newCards.map((item, i) => {
          let isFlip = false;
@@ -88,6 +125,7 @@ const Card = (props) => {
         );
       })}
     </div>
+    </>
   );
 };
 

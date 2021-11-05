@@ -10,6 +10,7 @@ const Timer = () => {
         return () => {
             clearInterval(timer);
         }
+        
     }, [counter])
     return (
         <div className="timer">

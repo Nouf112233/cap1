@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import Card from "./components/Card";
 import Game from "./components/Game";
 import Start from "./components/Start";
-import Timer from "./components/Timer";
+// import Timer from "./components/Timer";
 import Error404 from "./components/Error404";
 import c1 from "./imges/f1.jpg";
 import c2 from "./imges/f2.jpg";
