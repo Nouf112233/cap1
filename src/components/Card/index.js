@@ -10,7 +10,10 @@ const Card = (props) => {
   const [matched,setMatched]=useState([]);
 
   function flipCard(index) {
-    setOpenedCard((opened) => [...opened, index]);
+    if(!openedCard.includes(index)){
+      setOpenedCard((opened) => [...opened, index]);
+    }
+    
   }
 
   useEffect(() => {
@@ -51,7 +54,6 @@ const Card = (props) => {
       }
     }
     
-
     setNewCards([...cardsNumsEle]);
   }, []);
 
@@ -60,12 +62,15 @@ const Card = (props) => {
       {newCards.map((item, i) => {
          let isFlip = false;
 
-         if(openedCard.includes(i)) isFlip = true;
+         if(openedCard.includes(i))
+         { isFlip = true; 
+         
+        };
          if(matched.includes(item.id)) isFlip = true;
         return (
           <div 
           key={i} 
-          className={`card ${isFlip ? "flipped" : ""}`}
+          className={`card ${isFlip ? "flipped" : ""}`} 
            onClick={()=>flipCard(i)}
            >
              <div className="inner">

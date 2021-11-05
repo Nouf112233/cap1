@@ -67,13 +67,13 @@
     transform: rotateY(180deg);
   }
   .card .back {
-    background: #51DCE0;
-    color: #D6AEB5;
+    background: #e08a51;
+    color: #d6d3ae;
     font-size: 100px;
     transition: 0.3s ease all;
   }
   .card .back:hover {
-    background: #DBA8B1;
+    background: #d8dba8;
     color: #fff;
     transform: scale(1.02);
   }
