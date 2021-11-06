@@ -1,0 +1,9 @@
+.discription button{
+    color:rgb(54, 41, 241);
+    font-size: large;
+    font-style: italic;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 10px 14px 10px 4px rgba(121,176,237,0.75);
+
+}

@@ -19,6 +19,13 @@ const Card = (props) => {
     
   }
 
+  const newStart = () => {
+    setMatched([]);
+    setOpenedCard([]);
+    setCounter(60);
+
+}
+
   useEffect(() => {
     const timer =
     counter > 0 && setInterval(()=> setCounter(counter - 1),1000);
@@ -93,13 +100,15 @@ const Card = (props) => {
   }, []);
 
   return (
-    <>
+    <div className="counter">
     <div className="timer">
-            <h3> Lift Time : {counter}</h3>
+    
+           <button onClick={()=>newStart()} className="time">newStart</button> 
+            <h3 className="time"> Lift Time : {counter}</h3>
     </div>
-    <video autoplay muted loop id="myVideo">
+    {/* <video autoplay muted loop id="myVideo">
          <source src="https://youtu.be/LaQj636PJh0" type="video/mp4" />
-    </video>
+    </video> */}
     <div className="cards">
       {newCards.map((item, i) => {
          let isFlip = false;
@@ -130,7 +139,7 @@ const Card = (props) => {
         );
       })}
     </div>
-    </>
+    </div>
   );
 };
 
