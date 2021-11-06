@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-const Game = () => {
+const Discription = () => {
     return (
         <div>
             
@@ -9,4 +9,4 @@ const Game = () => {
     )
 }
 
-export default Game
+export default Discription;

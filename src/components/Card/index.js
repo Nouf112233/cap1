@@ -4,6 +4,7 @@ import "./style.css";
 
 const Card = (props) => {
   const cards = props.cards;
+  // const vidio = props.video;
   const numOfCards = Number(useParams().id);
   const [newCards, setNewCards] = useState([]);
   const [openedCard, setOpenedCard]=useState([]);
@@ -46,6 +47,7 @@ const Card = (props) => {
    
     
 }, [counter])
+
 
   useEffect(() => {
     if(openedCard<2) return;
@@ -94,7 +96,10 @@ const Card = (props) => {
     <>
     <div className="timer">
             <h3> Lift Time : {counter}</h3>
-        </div>
+    </div>
+    <video autoplay muted loop id="myVideo">
+         <source src="https://youtu.be/LaQj636PJh0" type="video/mp4" />
+    </video>
     <div className="cards">
       {newCards.map((item, i) => {
          let isFlip = false;
