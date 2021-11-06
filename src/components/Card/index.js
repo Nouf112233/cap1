@@ -106,9 +106,8 @@ const Card = (props) => {
            <button onClick={()=>newStart()} className="time">newStart</button> 
             <h3 className="time"> Lift Time : {counter}</h3>
     </div>
-    {/* <video autoplay muted loop id="myVideo">
-         <source src="https://youtu.be/LaQj636PJh0" type="video/mp4" />
-    </video> */}
+   
+       
     <div className="cards">
       {newCards.map((item, i) => {
          let isFlip = false;

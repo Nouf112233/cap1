@@ -18,7 +18,7 @@
     background-size: cover;
     width: 100%;
   } */
-  p {
+  /* p {
     text-align: right;
     font-size: 50px;
     color: #999;
@@ -29,10 +29,10 @@
   p strong {
     font-size: 14px;
     color: #777;
-  }
+  } */
   .cards {
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: repeat(5, 1fr) / repeat(5, 1fr);
     gap: 10px;
     
     
@@ -89,10 +89,14 @@
     height: 150px;
     width: 150px;
   }
-  #myVideo {
+  /* #myVideo {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
+  } */
+
+  .timer button{
+    color: tomato;
   }
