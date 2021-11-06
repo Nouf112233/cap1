@@ -128,7 +128,7 @@ const Card = (props) => {
 
 
             <img src={item.img} alt="card img"/>
-            {/* <h1>{item.id}</h1> */}
+            
             </div>
             <div className="back"></div>
 

@@ -75,13 +75,14 @@
     transform: rotateY(180deg);
   }
   .card .back {
-    background: #e08a51;
+    background: #f17878;
     color: #d6d3ae;
     font-size: 100px;
     transition: 0.3s ease all;
+    
   }
   .card .back:hover {
-    background: #d8dba8;
+    background: rgb(5, 204, 253);
     color: #fff;
     transform: scale(1.02);
   }
@@ -99,4 +100,21 @@
 
   .timer button{
     color: tomato;
+    border-radius: 7px;
   }
+  h3{
+     /* background:silver; linear-gradient(tomato, rgb(216, 144, 130),rgb(243, 206, 199)); */
+    width: 220px;
+    height: 50px;
+    margin: 7px auto;
+    color:silver;
+    text-shadow: 1px 1px 7px;
+    font-size:xx-large;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+  .timer{
+    margin-bottom: 15px;
+  }
+ 
